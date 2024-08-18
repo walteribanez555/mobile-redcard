@@ -81,7 +81,7 @@ export async function putService({ id, data, schema }) {
 
 export async function deleteService({ id , schema}){
     try {
-        const database = new DatabaseOperations( tableName, schema, schema );
+        const database = new DatabaseOperations( tableName, schema);
         if ( !id )
             return buildResponse( 400, { message : 'Missing the record id to delete' }, 'delete' );
 
