@@ -19,7 +19,7 @@ const keyField = 'link_id';
 const model = { 
     title: 'string',
     subtitle: 'string',
-    link: 'string',
+    url: 'string',
     status: 'number'
 }
 
