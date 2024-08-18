@@ -1,0 +1,15 @@
+{
+  "name": "mobile-redcard",
+  "version": "1.0.0",
+  "main": "./src/handler.mjs",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "mysql": "^2.18.1"
+  }
+}
