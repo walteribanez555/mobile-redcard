@@ -217,7 +217,7 @@ export function validateData( data, model, type = 'post' ) {
     const validModel = {};
     for ( let i = 0; i < keys.length; i++ ) {
         if ( modelKeys.includes( keys[ i ] ) ) {
-            validModel[ keys[ i ] ] = typeof( values[ i ] ) === 'string' && values[ i ].trim().length > 0 ? values[ i ].trim()
+            validModel[ keys[ i ] ] = typeof( values[ i ] ) === 'string' || typeof( values[i] === 'text') && values[ i ].trim().length > 0 ? values[ i ].trim()
                 : typeof( values[ i ] ) === 'number' ? values[ i ]
                     : typeof( values[ i ] ) === 'object' && values[ i ] instanceof Array && values[ i ].length > 0 ? values[ i ] : false;
         }

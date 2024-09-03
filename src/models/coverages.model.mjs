@@ -7,7 +7,7 @@ const keyField = 'coverage_id';
 
 const model= { 
     title : 'string',
-    description : 'string',
+    description : 'text',
     files: 'string',
 }
 
