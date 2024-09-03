@@ -25,8 +25,8 @@ export async function getCoverage({id , schema}) {
         const response = await database.read(data);
         return buildResponse(200,response,'get');
     }catch ( err ) {
-        colorLog( ` GET COVERAGE ERROR:  ${ JSON.stringify( error ) }`, 'red', 'reset' );
-        return buildResponse( 500, error, 'get' );
+        colorLog( ` GET COVERAGE ERROR:  ${ JSON.stringify( err ) }`, 'red', 'reset' );
+        return buildResponse( 500, err, 'get' );
     }
 
 }
@@ -46,8 +46,8 @@ export async function postCoverage({data, schema}) {
         const response = await database.create(newRegister, keyField);
         return buildResponse(200, response, "post", keyField, data);
       } catch (err) {
-        colorLog(` POST DISCOUNT ERROR:  ${JSON.stringify(error)}`, "red", "reset");
-        return buildResponse(500, error, "post");
+        colorLog(` POST DISCOUNT ERROR:  ${JSON.stringify(err)}`, "red", "reset");
+        return buildResponse(500, err, "post");
       }
 }
 
