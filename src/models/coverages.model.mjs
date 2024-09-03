@@ -34,21 +34,17 @@ export async function getCoverage({id , schema}) {
 
 export async function postCoverage({data, schema}) { 
     try {
-        const database = new DatabaseOperations(tableName, schema);
-        const newRegister = validateData(data, model);
-        if (Object.keys(newRegister).length === 0)
-          return buildResponse(
-            400,
-            { message: "Missing required fields or not valid" },
-            "post"
-          );
-    
-        const response = await database.create(newRegister, keyField);
-        return buildResponse(200, response, "post", keyField, data);
-      } catch (err) {
-        colorLog(` POST DISCOUNT ERROR:  ${JSON.stringify(err)}`, "red", "reset");
-        return buildResponse(500, err, "post");
-      }
+        const database = new DatabaseOperations( tableName, schema );
+        const newRegister = validateData( data, model );
+        if ( Object.keys( newRegister ).length === 0 )
+            return buildResponse( 400, { message : 'Missing required fields or not valid' }, 'post' );
+
+        const response = await database.create( newRegister, keyField );
+        return buildResponse( 200, response, 'post', keyField, data );
+    } catch ( error ) {
+        colorLog( ` COVERAGES SERVICES ERROR:  ${ JSON.stringify( error ) }`, 'red', 'reset' );
+        return buildResponse( 500, error, 'post' );
+    }
 }
 
 export async function putCoverage({id, data, schema}) { 

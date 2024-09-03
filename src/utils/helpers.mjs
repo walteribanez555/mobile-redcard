@@ -210,31 +210,26 @@ export async function deleteFile( { dir = '', file, ext, local = true } ) {
     }
 }
 
-export function validateData(data, model, type = 'post') {
-    const keys = Object.keys(data);
-    const values = Object.values(data);
-    const modelKeys = Object.keys(model);
+export function validateData( data, model, type = 'post' ) {
+    const keys = Object.keys( data );
+    const values = Object.values( data );
+    const modelKeys = Object.keys( model );
     const validModel = {};
-
-    for (let i = 0; i < keys.length; i++) {
-        if (modelKeys.includes(keys[i])) {
-            validModel[keys[i]] = typeof values[i] === 'string' && values[i].trim().length > 0 ? values[i].trim()
-                : typeof values[i] === 'number' ? values[i]
-                    : typeof values[i] === 'object' && values[i] instanceof Array && values[i].length > 0 ? values[i]
-                        : typeof values[i] === 'string' && model[keys[i]] === 'text' ? values[i].trim()
-                            : false;
+    for ( let i = 0; i < keys.length; i++ ) {
+        if ( modelKeys.includes( keys[ i ] ) ) {
+            validModel[ keys[ i ] ] = typeof( values[ i ] ) === 'string' && values[ i ].trim().length > 0 ? values[ i ].trim()
+                : typeof( values[ i ] ) === 'number' ? values[ i ]
+                    : typeof( values[ i ] ) === 'object' && values[ i ] instanceof Array && values[ i ].length > 0 ? values[ i ] : false;
         }
-    }
-
-    const validation = Object.values(validModel);
-    if (type === 'post' && (validation.length !== Object.keys(model).length))
+    }    
+    const validation = Object.values( validModel );
+    if ( type === 'post' && ( validation.length !== Object.keys( model ).length ) ) 
         return false;
-    if (type === 'put' && (!validation.some(elem => elem) || validation.length === 0))
+    if ( type === 'put' && ( !validation.some( elem => elem ) || validation.length === 0 ) )
         return false;
 
     return validModel;
 }
-
 
 export function buildResponse ( statusCode, body, method, id = 'id', register = {} ) {
     const response = method === 'get' ? body?.rows ? body.rows : body 

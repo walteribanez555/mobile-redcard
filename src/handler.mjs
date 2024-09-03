@@ -11,7 +11,6 @@ export const handler = async (event) => {
     console.log( 'Main Fecha-Hora: ', new Date() );
     console.log( 'EVENT: ' , event );
     const { method, path } = event?.requestContext?.http ? event.requestContext.http : {};
-    const schema = "redcard";
     // const authorization = event?.headers?.authorization ? event.headers.authorization : false;
     // const schema = event.headers.schema || 'assist_trip';
     const { id, init, end, nro_identificacion, quantity } = typeof( event.queryStringParameters ) === 'object' && Object.keys( event.queryStringParameters ).length > 0 ? event.queryStringParameters : false;
@@ -46,7 +45,6 @@ export const handler = async (event) => {
             'get' : getDiscounts,
             'post' : postDiscounts,
             'put' : putDiscounts,
-            'delete' : deleteDiscounts
         },
         'others' : buildResponse,
     }
