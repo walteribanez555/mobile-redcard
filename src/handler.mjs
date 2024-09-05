@@ -4,7 +4,7 @@ import { buildResponse, parseJsonToObject } from './utils/helpers.mjs';
 import {  getServices, postServices, putServices , deleteServices } from './controllers/services.controller.mjs';
 import { getLinks, postLinks, putLinks, deleteLinks } from './controllers/links.controller.mjs';
 import { getCoverages, postCoverages, putCoverages, deleteCoverages } from "./controllers/coverages.controller.mjs";
-import { getDiscounts, postDiscounts, putDiscounts } from "./controllers/discounts.controller.mjs";
+import { deleteDiscounts, getDiscounts, postDiscounts, putDiscounts } from "./controllers/discounts.controller.mjs";
 
 
 export const handler = async (event) => {
@@ -45,6 +45,7 @@ export const handler = async (event) => {
             'get' : getDiscounts,
             'post' : postDiscounts,
             'put' : putDiscounts,
+            'delete': deleteDiscounts,
         },
         'others' : buildResponse,
     }
